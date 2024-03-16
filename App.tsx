@@ -13,6 +13,8 @@ import {
   Text,
 } from 'react-native';
 import SignInScreen from './src/screens/SignInScreen/SignInScreen';
+import SignUpScreen from './src/screens/SignUpScreen/SignUpScreen';
+import ConfirmEmailScreen from './src/screens/ConfirmEmailScreen';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -21,7 +23,7 @@ type SectionProps = PropsWithChildren<{
 function App(): React.JSX.Element {
   return (
     <SafeAreaView style={styles.root}>
-      <SignInScreen />
+      <ConfirmEmailScreen />
     </SafeAreaView>
   );
 }
@@ -29,6 +31,7 @@ function App(): React.JSX.Element {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
+    backgroundColor: '#F9FBFC',
   }
 });
 
