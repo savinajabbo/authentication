@@ -3,14 +3,11 @@ import { View, Text, StyleSheet, useWindowDimensions, ScrollView } from 'react-n
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 
-const ConfirmEmailScreen = () => {
-    const [code, setCode] = useState('');
+const ForgotPasswordScreen = () => {
+    const [username, setUsername] = useState('');
 
-    const onConfirmPressed = () => {
-        console.warn("Confirm");
-    }
-    const onResendPressed = () => {
-        console.warn("Resend");
+    const onSendPressed = () => {
+        console.warn("Send");
     }
     const onSignInPressed = () => {
         console.warn("onSignInPress");
@@ -19,20 +16,15 @@ const ConfirmEmailScreen = () => {
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.root}>
-                <Text style={styles.title}>Confirm your email</Text>
+                <Text style={styles.title}>Reset your password</Text>
                 <CustomInput 
-                    placeholder="Enter your confirmation code"
-                    value={code}
-                    setValue={setCode}
+                    placeholder="Username"
+                    value={username}
+                    setValue={setUsername}
                 />
                 <CustomButton
-                    text="Confirm"
-                    onPress={onConfirmPressed}
-                />
-                <CustomButton
-                    text="Resend code"
-                    onPress={onResendPressed}
-                    type='SECONDARY'
+                    text="Send"
+                    onPress={onSendPressed}
                 />
                 <CustomButton
                     text="Back to Sign in"
@@ -69,4 +61,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default ConfirmEmailScreen;
+export default ForgotPasswordScreen;

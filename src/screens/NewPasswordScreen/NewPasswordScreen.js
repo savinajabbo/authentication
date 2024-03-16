@@ -3,14 +3,12 @@ import { View, Text, StyleSheet, useWindowDimensions, ScrollView } from 'react-n
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 
-const ConfirmEmailScreen = () => {
+const NewPasswordScreen = () => {
     const [code, setCode] = useState('');
+    const [newPassword, setNewPassword] = useState('');
 
-    const onConfirmPressed = () => {
-        console.warn("Confirm");
-    }
-    const onResendPressed = () => {
-        console.warn("Resend");
+    const onSubmitPressed = () => {
+        console.warn("onSubmitPressed");
     }
     const onSignInPressed = () => {
         console.warn("onSignInPress");
@@ -19,20 +17,20 @@ const ConfirmEmailScreen = () => {
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.root}>
-                <Text style={styles.title}>Confirm your email</Text>
+                <Text style={styles.title}>Reset your password</Text>
                 <CustomInput 
-                    placeholder="Enter your confirmation code"
+                    placeholder="Code"
                     value={code}
                     setValue={setCode}
                 />
-                <CustomButton
-                    text="Confirm"
-                    onPress={onConfirmPressed}
+                <CustomInput 
+                    placeholder="Enter your new password"
+                    value={newPassword}
+                    setValue={setNewPassword}
                 />
                 <CustomButton
-                    text="Resend code"
-                    onPress={onResendPressed}
-                    type='SECONDARY'
+                    text="Submit"
+                    onPress={onSubmitPressed}
                 />
                 <CustomButton
                     text="Back to Sign in"
@@ -69,4 +67,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default ConfirmEmailScreen;
+export default NewPasswordScreen;
