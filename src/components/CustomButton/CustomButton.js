@@ -32,11 +32,11 @@ const styles = StyleSheet.create({
     },
 
     container_PRIMARY: {
-        backgroundColor: 'red',
+        backgroundColor: 'white',
     },
 
     container_SECONDARY: {
-        borderColor: 'red',
+        borderColor: 'white',
         borderWidth: 2,
     },
 
@@ -44,11 +44,11 @@ const styles = StyleSheet.create({
 
     text: {
         fontWeight: 'bold',
-        color: 'white',
+        color: 'black',
     },
 
     text_SECONDARY: {
-        color: 'red',
+        color: 'black',
     },
 
     text_TERTIARY: {

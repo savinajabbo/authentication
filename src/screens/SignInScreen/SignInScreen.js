@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { View, Text, Image, StyleSheet, useWindowDimensions, ScrollView } from 'react-native';
-import Logo from '../../../assets/images/silicon-valley.jpeg';
+import Logo from '../../../assets/images/flower-logo.png';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
@@ -26,13 +26,14 @@ const SignInScreen = () => {
             <View style={styles.root}>
                 <Image 
                     source={Logo}
-                    style={[styles.logo, {height: height * 0.3}]}
+                    style={[styles.logo, {height: height * 0.2}]}
                     resizeMode='contain'
                 />
                 <CustomInput 
                     placeholder="Username"
                     value={username}
                     setValue={setUsername}
+                    secureTextEntry={false}
                 />
                 <CustomInput
                     placeholder="Password"
