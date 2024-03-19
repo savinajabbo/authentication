@@ -4,21 +4,28 @@ import Logo from '../../../assets/images/flower-logo.png';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
+import { useNavigation } from '@react-navigation/native';
 
 const SignInScreen = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const {height} = useWindowDimensions();
+    const navigation = useNavigation();
 
     const onSignInPressed = () => {
         console.warn("Sign in");
+        // validate user
+
+        navigation.navigate('HomeScreen');
     }
     const onForgotPasswordPressed = () => {
         console.warn("onForgotPasswordPressed");
+        navigation.navigate('ForgotPassword');
     }
     const onSignUpPressed = () => {
         console.warn("onSignUpPress");
+        navigation.navigate('SignUp');
     }
 
     return (
