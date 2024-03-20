@@ -4,21 +4,16 @@ import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
 import { useNavigation } from '@react-navigation/native';
+import {useForm} from 'react-hook-form'
 
 const SignUpScreen = () => {
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [passwordRepeat, setPasswordRepeat] = useState('');
-
     const navigation = useNavigation();
+    const {control, handleSubmit, formState: {errors}} = useForm();
 
     const onRegisterPressed = () => {
-        console.warn("Register");
         navigation.navigate('ConfirmEmail');
     }
     const onSignInPressed = () => {
-        console.warn("onSignInPress");
         navigation.navigate('SignIn');
     }
 
@@ -33,31 +28,33 @@ const SignUpScreen = () => {
         <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.root}>
                 <Text style={styles.title}>Create an account</Text>
-                <CustomInput 
+                <CustomInput
+                    name="username"
                     placeholder="Username"
-                    value={username}
-                    setValue={setUsername}
+                    control={control}
+                    rules={{required: 'Username is required'}}
                 />
                 <CustomInput 
+                    name="email"
                     placeholder="Email"
-                    value={email}
-                    setValue={setEmail}
+                    control={control}
+                    rules={{required: 'Email is required'}}
                 />
                 <CustomInput
+                    name="password"
                     placeholder="Password"
-                    value={password}
-                    setValue={setPassword}
+                    control={control}
+                    rules={{required: 'Password is required', minLength: {value: 3, message: 'Password should be a minimum of 3 characters long'}}}
                     secureTextEntry
                 />
                 <CustomInput
+                    name="password-repeat"
                     placeholder="Repeat Password"
-                    value={passwordRepeat}
-                    setValue={setPasswordRepeat}
                     secureTextEntry
                 />
                 <CustomButton
                     text="Register"
-                    onPress={onRegisterPressed}
+                    onPress={handleSubmit(onRegisterPressed)}
                 />
 
                 <Text style={styles.text}>
