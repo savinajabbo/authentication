@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, useWindowDimensions, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, useWindowDimensions } from 'react-native';
+import Logo from '../../../assets/images/flower-logo.png';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
@@ -7,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import {useForm} from 'react-hook-form'
 
 const SignUpScreen = () => {
+    const {height} = useWindowDimensions();
     const navigation = useNavigation();
     const {control, handleSubmit, formState: {errors}} = useForm();
 
@@ -27,28 +29,44 @@ const SignUpScreen = () => {
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.root}>
+                <Image 
+                    source={Logo}
+                    style={[styles.logo, {height: height * 0.2}]}
+                    resizeMode='contain'
+                />
                 <Text style={styles.title}>Create an account</Text>
                 <CustomInput
                     name="username"
-                    placeholder="Username"
                     control={control}
-                    rules={{required: 'Username is required'}}
+                    placeholder="Username"
+                    rules={{
+                        required: 'Username is required', 
+                        minLength: {
+                            value: 3,
+                            message: 'Username should be at least 3 characters long',
+                        },
+                        maxLength: {
+                            value: 24,
+                            message: 'Username should be at maximum 24 characters long',
+                        },
+                    }}
                 />
                 <CustomInput 
                     name="email"
-                    placeholder="Email"
                     control={control}
+                    placeholder="Email"
                     rules={{required: 'Email is required'}}
                 />
                 <CustomInput
                     name="password"
-                    placeholder="Password"
                     control={control}
+                    placeholder="Password"
                     rules={{required: 'Password is required', minLength: {value: 3, message: 'Password should be a minimum of 3 characters long'}}}
                     secureTextEntry
                 />
                 <CustomInput
                     name="password-repeat"
+                    control={control}
                     placeholder="Repeat Password"
                     secureTextEntry
                 />
@@ -98,6 +116,11 @@ const styles = StyleSheet.create({
     link: {
         color: '#FDB075',
     },
+    logo: {
+        width: '70%',
+        maxWidth: 300,
+        maxHeight: 200,
+    }
 })
 
 export default SignUpScreen
