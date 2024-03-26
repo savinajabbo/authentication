@@ -13,6 +13,7 @@ import {
   Text,
 } from 'react-native';
 import Navigation from './src/navigation';
+import auth from '@react-native-firebase/auth';
 
 type SectionProps = PropsWithChildren<{
   title: string;
